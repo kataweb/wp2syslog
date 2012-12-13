@@ -1,0 +1,68 @@
+<h1>WPsyslog documentation of WPsyslog for plugin developers</h1>
+<p>WPsyslog is a global event logging facility for WordPress. This document describes how WPsyslog can be used with your code (WP plugins or themes).</p>
+<h2>Benefits</h2>
+<p>Developers can benefit in two ways from WPsyslog:</p>
+<ul>
+	<li>At each point of the code, a log entry can be triggered. No need to print to the browser, just let WPsyslog put it in the database, and you can have a look later.</li>
+	<li>You can develop your plugins with support for WPsyslog. This will give your users the chance to better understand what your plugin is doing.</li>
+</ul>
+<p>End users can benefit from WPsyslog, too:</p>
+<ul>
+	<li>Log entries for core events help to keep track of the daily business, especially on multiuser blogs.</li>
+	<li>Log entries for core events can raise awareness for threats and problems, for example abuse attempts.</li>
+	<li>Log entries triggered by plugins allow the user to comprehend the functionality of the plugin.</li>
+</ul>
+
+<h2>Integration</h2>
+<p>Note: The terms <em>must</em>, <em>should</em>, <em>can</em> are used as commonly understood in specifications. In short: <em>must</em> is a prequisite, <em>should</em> is a recommendation, <em>can</em> is an option.</p>
+<p>WPsyslog saves log entries in an own database. The central function is <code>wpsyslog()</code> (arguments are described below):</p>
+<p><code>bool wpsyslog($module, $message, $severity=1, $cut=500 $userid=0, $time=0)</code></p>
+<p>In order to trigger log entries, you can place the following line in your code, wherever and as often as you want:</p>
+<p><code>if (function_exists('wpsyslog')) wpsyslog(arguments);</code></p>
+<p>or, if outside of PHP tags:</p>
+<p><code>&lt;?php if (function_exists('wpsyslog')) wpsyslog(arguments); ?&gt;</code></p>
+<p>When the plugin is activated, and the according section is executed, <code>wpsyslog()</code> will create an entry in the log database. The function will return boolean <code>true</code> if it succeeded creating the entry, and boolean <code>false</code> elsewise.</p>
+
+<h2>Data format</h2>
+<p>The function <code>wpsyslog()</code> accepts the followning arguments:</p>
+
+<h3><code>$module</code></h3>
+<p>The module must designate your entity (plugin or theme). It must not contain other caracters than lowercase letters, numbers, underscores. It must not be longer than 30 characters. The descriptors <code>core</code> and <code>wpsyslog</code> are reserved.</p>
+
+<h3><code>$message</code></h3>
+<p>The message contains a free text to describe the entry. It can be up to 500 characters of any kind. Inline HTML elements can, but should not be used; block HTML elements must not be used. The wording and eventual HTML must be sober and factual, and they must enable the recipient to properly investigate the problem. The message should consist of complete sentences, finished with a full-stop.</p>
+
+<h3><code>$severity</code></h3>
+<p>This item designates the severity of the log entry. It must be one of the values <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>. These values have the following meanings:</p>
+<ul>
+	<li><code>0</code> = <strong>Debug</strong>: should only be used during development</li>
+	<li><code>1</code> = <strong>Notice</strong>: for verbosely logging generic and recurring events (e.g. a user has logged in)</li>
+	<li><code>2</code> = <strong>Important</strong>: events that change something in the system, but are usual (e.g. a post is published)</li>
+	<li><code>3</code> = <strong>Warning</strong>: events that indicate an exceptional or abnormal behaviour (e.g. a file could not be uploaded or something very important was changed)</li>
+	<li><code>4</code> = <strong>Error</strong>: events that indicate a fatal abnormal behaviour (e.g. a database error)</li>
+	<li><code>5</code> = <strong>Panic</strong>: events that indicate a serious damage of the system itself (e.g. cannot connect to the database)</li>
+</ul>
+<p>A normal entry should have a level of <code>1</code> or <code>2</code>. If no value for <code>$severity</code> is passed, <code>$severity</code> is set to <code>1</code>.</p>
+
+<h3><code>$cut</code></h3>
+<p>After how many characters the output will be cut off. Defaults to <code>500</code>.</p>
+
+
+<h3><code>$userid</code></h3>
+<p>This item is the numerical user ID for the user triggering the event. This argument will usually not be required. If no value for <code>$userid</code> is passed, <code>$userid</code> is set to the user ID of the current user.</p>
+
+<h3><code>$time</code></h3>
+<p>This item is the Unix timestamp for the time of the event, and if it is used, it must be a Unix timestamp. This argument will usually not be required. If no value for <code>$time</code> is passed, <code>$time</code> is set to the current Unix timestamp.</p>
+
+<h2>Examples</h2>
+<p>Below are usage examples for the logging facility. Remember to use <code>function_exists()</code> to be on the safe side when the plugin is not activated.</p>
+<p>
+	<code>wpsyslog('myplugin', "We are running on a {$_SERVER['SERVER_SOFTWARE']} webserver.", 0);</code><br />
+	<code>wpsyslog('myplugin', "Damn array! &lt;pre&gt;{print_r($myGoddamnArray, true)}&lt;/pre&gt;", 0, 3000);</code><br />
+	<code>wpsyslog('myplugin', "Cron backup for foobar successfully finished.");</code><br />
+	<code>wpsyslog('myplugin', "A new foo has been added to the bar.", 2);</code><br />
+	<code>wpsyslog('myplugin', "Unauthorized user tried to use my features.", 3);</code><br />
+	<code>wpsyslog('myplugin', "Creating database table failed.".mysql_error(), 4);</code>
+</p>
+<h2>Internationalisation of log messages</h2>
+<p>Log messages can be fully localized. If you want to do that, it is recommended that you create separate language templates for your plugin and load them independently. It is also recommended to load the textdomain outside of an API-triggered function (i.e. to be directly called), to disable support for multi-language plugins. It would be very confusing to have log messages in different languages.</p>

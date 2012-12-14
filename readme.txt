@@ -33,8 +33,8 @@ spreading the word. Not (only) because of this plugin, but generally for a bette
 
 == Screenshots ==
 
-1. https://github.com/kataweb/wp2syslog/blob/master/doc/screenshot1.png
-2. https://github.com/kataweb/wp2syslog/blob/master/doc/screenshot2.png
+1. https://raw.github.com/kataweb/wp2syslog/master/doc/screenshot1.png
+2. https://raw.github.com/kataweb/wp2syslog/master/doc/screenshot2.png
 
 == Changelog ==
 

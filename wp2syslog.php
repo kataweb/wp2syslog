@@ -168,6 +168,9 @@ function wp2syslog($module, $message, $severity=1, $cut=500, $userid=0, $time=0 
   closelog();
 
   if($wp2syslog_options['db']=='true'){
+    $wp2syslogStatus = get_option('wp2syslog_init');
+    if ($wp2syslogStatus!='complete') return true; #UGLY: first activation hasn't already created table
+
     $query = "
     INSERT INTO `{$wpdb->prefix}wp2syslog` (
     	`time`,

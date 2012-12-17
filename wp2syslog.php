@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: wp2syslog
-Plugin URI: http://www.kataweb.it
+Plugin URI: https://github.com/kataweb/wp2syslog
 Description: It keeps track of wordpress's events and log them to syslog.
 Author: psicosi448
 Version: 0.2

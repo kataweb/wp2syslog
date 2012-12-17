@@ -33,8 +33,9 @@ spreading the word. Not (only) because of this plugin, but generally for a bette
 
 == Screenshots ==
 
-1. https://raw.github.com/kataweb/wp2syslog/master/doc/screenshot1.png
-2. https://raw.github.com/kataweb/wp2syslog/master/doc/screenshot2.png
+1. Main configuration page
+2. Show log from database
+2. Show log, with query filter
 
 == Changelog ==
 

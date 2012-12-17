@@ -12,15 +12,14 @@ wp2syslog -- Global logging facility for WordPress (WPsyslog revisited)
 
 == Description ==
 
-This plugin is forked from first 0.2 version of http://www.ossec.net/wpsyslog2/
-already forked from the wpsyslog plugin by Alex Guensche ( http://www.zirona.com/software/donate ).
+End users can benefit from wp2syslog:
+* Log entries for core events help to keep track of the daily business, especially on multiuser blogs.
+* Log entries for core events can raise awareness for threats and problems, for example abuse attempts.
+* Log entries triggered by plugins allow the user to comprehend the functionality of the plugin.
 
-The firts version of this plugin was developed during a project with the German "Menschen für Tierrechte" (Humans for Animal Rights).
-It is an organisation of activists who advocate animal rights and fight against abuse of animals. They generously decided to donate
-this work to the general public by letting Zirona put it under the GNU GPL and allowing us to promote and distribute it.
-
-Please support the work of Humans for Animal Rights, e.g. by placing a link to [Humans for Animal Rights](http://www.tierrechte.de/ "www.tierrechte.de") and
-spreading the word. Not (only) because of this plugin, but generally for a better treatment of the beings on this planet.
+Developers can benefit in two ways from wp2syslog:</p>
+* At each point of the code, a log entry can be triggered. No need to print to the browser, just let wp2syslog put it in the database, and you can have a look later.
+* You can develop your plugins with support for wp2syslog. This will give your users the chance to better understand what your plugin is doing (see doc/specs.html).
 
 == Installation ==
 
@@ -45,6 +44,14 @@ spreading the word. Not (only) because of this plugin, but generally for a bette
 
 
 
-== Arbitrary section 1 ==
+== Credits ==
 
+This plugin is forked from first 0.2 version of http://www.ossec.net/wpsyslog2/
+already forked from the wpsyslog plugin by Alex Guensche ( http://www.zirona.com/software/donate ).
 
+The firts version of this plugin was developed during a project with the German "Menschen für Tierrechte" (Humans for Animal Rights).
+It is an organisation of activists who advocate animal rights and fight against abuse of animals. They generously decided to donate
+this work to the general public by letting Zirona put it under the GNU GPL and allowing us to promote and distribute it.
+
+Please support the work of Humans for Animal Rights, e.g. by placing a link to [Humans for Animal Rights](http://www.tierrechte.de/ "www.tierrechte.de") and
+spreading the word. Not (only) because of this plugin, but generally for a better treatment of the beings on this planet.

@@ -293,7 +293,9 @@ add_action('retrieve_password', 'wp2syslog_retrieve_password', 50);
 function wp2syslog_retrieve_password($arg='null', $arg2='null') {
 	global $wp2syslog_eventTriggered, $wp2syslogDoTrigger;
 	if ('true' === $wp2syslogDoTrigger['retrieve_password']) {
-		$user = get_profile('display_name', $arg);
+                $user = get_user_by( 'login', $arg);
+                $user = $user->ID;
+                $user = get_the_author_meta('display_name', $user);
 		wp2syslog('core', sprintf( __('Password created and sent to user %1$s (%2$s).', 'wp2syslog'), $user, $arg ), 2);
 		$wp2syslog_eventTriggered['retrieve_password'] = true;
 	}

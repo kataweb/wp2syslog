@@ -40,6 +40,8 @@ wp2syslog -- Global logging facility for WordPress (WPsyslog revisited)
 
 == Changelog ==
 
+= 0.2.1 =
+* fix annoying deprecated function
 
 
 == Upgrade notice ==

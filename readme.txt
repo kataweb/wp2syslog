@@ -40,6 +40,9 @@ wp2syslog -- Global logging facility for WordPress (WPsyslog revisited)
 
 == Changelog ==
 
+= 0.2.2 =
+* bugfix: typo in event function declaration (thanks Chris)
+
 = 0.2.1 =
 * fix annoying deprecated function
 

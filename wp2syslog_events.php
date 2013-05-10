@@ -284,7 +284,8 @@ add_action('delete_user', 'wp2syslog_delete_user', 50);
 function wp2syslog_delete_user($arg='null', $arg2='null') {
 	global $wp2syslog_eventTriggered, $wp2syslogDoTrigger;
 	if ('true' === $wp2syslogDoTrigger['delete_user']) {
-		wp2syslog('core', sprintf( __('User deleted. Id: #%s.', 'wp2syslog'), $arg ), 2);
+                $user = get_userdata($arg);
+		wp2syslog('core', sprintf( __('User deleted. Id: #%s. User login: %s', 'wp2syslog'), $arg, $user->user_login ), 3);
 		$wp2syslog_eventTriggered['delete_user'] = true;
 	}
 }
@@ -311,7 +312,7 @@ function wp2syslog_register_post($arg='null', $arg2='null') {
 }
 
 add_action('user_register', 'wp2syslog_user_register', 50);
-function wp2syslog_user_register() {
+function wp2syslog_user_register($arg='null', $arg2='null') {
 	global $wp2syslog_eventTriggered, $wp2syslogDoTrigger;
 	if ('true' === $wp2syslogDoTrigger['user_register']) {
 		$user = get_userdata($arg);

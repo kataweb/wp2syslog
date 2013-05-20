@@ -40,6 +40,10 @@ wp2syslog -- Global logging facility for WordPress (WPsyslog revisited)
 
 == Changelog ==
 
+= 0.2.3 =
+* bugfix: error in wp2syslog function (thanks Bobo)
+          Now is possible to use it in others plugins.
+
 = 0.2.2 =
 * bugfix: typo in event function declaration (thanks Chris)
 

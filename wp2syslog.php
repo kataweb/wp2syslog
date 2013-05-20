@@ -4,7 +4,7 @@ Plugin Name: wp2syslog
 Plugin URI: https://github.com/kataweb/wp2syslog
 Description: It keeps track of wordpress's events and log them to syslog.
 Author: psicosi448
-Version: 0.2.2
+Version: 0.2.3
 Author URI: http://www.kataweb.it
 */
 
@@ -163,7 +163,7 @@ function wp2syslog($module, $message, $severity=1, $cut=500, $userid=0, $time=0 
   else if($severity == 5) $severityname = "Critical";
 
   /* First log via syslog. */
-  openlog("wp2syslog", LOG_PID, LOG_DAEMON);
+  openlog($module, LOG_PID, LOG_DAEMON);
   syslog(LOG_WARNING, "$block_header ".home_url()." $severityname: $message");
   closelog();
 

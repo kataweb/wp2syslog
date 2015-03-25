@@ -1,7 +1,7 @@
 wp2syslog
 =========
 It keeps track of wordpress's events and log them to syslog.
-Compatible up to WP 3.4.2.
+Compatible up to WP 4.2.
 
 
 ------------------------------

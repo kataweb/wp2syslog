@@ -3,7 +3,7 @@ Contributors: psicosi448
 Donate link: 
 Tags: logging,events,actions,syslog
 Requires at least: 3.3
-Tested up to: 3.5
+Tested up to: 4.2
 Stable tag: trunk
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -39,6 +39,11 @@ wp2syslog -- Global logging facility for WordPress (WPsyslog revisited)
 2. Show log, with query filter
 
 == Changelog ==
+
+= 1.0.0 =
+* changes: Refactoring with helping of some phpunit tests.
+* changes: The string ident 'core', which is added to each wp core message, is changed to more eloquent 'wpcore'.
+* new: added client ip and user-agent to infos logged by default
 
 = 0.2.3 =
 * bugfix: error in wp2syslog function (thanks Bobo)

@@ -37,11 +37,13 @@
 }
 
 
-.col_id { width: 3%; }
-.col_time { width: 18%; }
-.col_module { width: 10%; }
+.col_id { width: 5%; }
+.col_time { width: 11%; }
+.col_module { width: 7%; }
 .col_severity { width: 7%; }
 .col_user { width: 10%; }
+.col_clientip { width: 12%; }
+.col_useragent { width: 15%; }
 
 #wp2syslog_data table tr.sev_debug { background-color: #e4e4e4; color: #000; }
 #wp2syslog_data table tr.sev_notice { background-color: #fff; color: #000; }
@@ -73,9 +75,8 @@
 	float: left;
 	padding: 5px;
 	margin: 2px;
-	height: 250px;
+	height: 300px;
 	background: #eee;
-	height: 250px;
 	overflow: hidden;
 	width: auto;
 }

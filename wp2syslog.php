@@ -248,7 +248,7 @@ class WP2SYSLOG{
 		{
 				if ($this->init_status=='complete')
 				{
-						add_menu_page('Wp2syslog - Show Log', 'Show Log', 'read_wp2syslog', 'showlog','wp2syslog_showlog',plugin_dir_url( __FILE__ ) .'assets/icon.png');
+						add_menu_page('Wp2syslog - Show Log', 'Show Log', 'read_wp2syslog', 'showlog','wp2syslog_showlog',plugin_dir_url( __FILE__ ) .'icon.png');
 				}
 
 				$wp2syslog_options = get_option('wp2syslog_options');

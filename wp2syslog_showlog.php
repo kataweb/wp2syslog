@@ -418,8 +418,8 @@ function wp2syslog_showlog(){
 												'sev_error',
 												'sev_panic'
 												);
-
-								$wp2syslogTime = date( get_option('wp2syslog_options')['timeformat'], ( strtotime($entry->time) ) );
+								$check_options=get_option('wp2syslog_options');
+								$wp2syslogTime = date( $check_options['timeformat'], ( strtotime($entry->time) ) );
 
 								if ( is_numeric($entry->user) ) 
 								{

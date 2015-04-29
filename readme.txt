@@ -40,6 +40,9 @@ wp2syslog -- Global logging facility for WordPress (WPsyslog revisited)
 
 == Changelog ==
 
+= 1.0.3 =
+* fix: syntax error in table creation
+
 = 1.0.2 =
 * fix: compatibility with php 5.3 (sorry, php -l *php won't work as I expected).
 

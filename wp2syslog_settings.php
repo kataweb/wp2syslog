@@ -174,6 +174,11 @@ class WP2SYSLOG_SETTINGS{
 						{
 								$input['db']='false';
 						}
+						elseif(!array_key_exists('tableheight',$input))
+						{
+								$input['tableheight']='600px';
+						}
+						$input['tableheight']=filter_var($input['tableheight'],FILTER_SANITIZE_NUMBER_INT);
 				}
 				$this->options=$input;
 

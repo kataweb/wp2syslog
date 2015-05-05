@@ -40,6 +40,9 @@ wp2syslog -- Global logging facility for WordPress (WPsyslog revisited)
 
 == Changelog ==
 
+= 1.0.4 =
+* fix: load css only in showlog page
+
 = 1.0.3 =
 * fix: syntax error in table creation
 

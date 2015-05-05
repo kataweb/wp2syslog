@@ -237,6 +237,11 @@ function wp2syslog_showlog(){
 		$wp2syslogSystemUsers = $wpdb->get_results("SELECT `id`, `user_login` FROM `{$wpdb->users}`");
 		$wp2syslogClientsIP = $wpdb->get_col("SELECT DISTINCT `clientip` FROM `{$wpdb->prefix}wp2syslog`");
 
+		wp_register_style( 'wp2syslogStylesheet', plugins_url('wp2syslog.css', __FILE__) );
+		wp_enqueue_style( 'wp2syslogStylesheet' );
+		$check_options=get_option('wp2syslog_options');
+		$tableheight=filter_var($check_options['tableheight'],FILTER_SANITIZE_NUMBER_INT)."px";
+
 		?>
 
 				<script type="text/javascript">
@@ -381,8 +386,8 @@ function wp2syslog_showlog(){
 				</div>
 				</form>
 
-				<div id="wp2syslog_data">
-				<table>
+				<div id="wp2syslog_data" style="height:<?php echo $tableheight; ?>">
+				<table >
 				<thead>
 				<tr>
 				<th scope="col" class="col_id"><?php echo __('ID', 'wp2syslog') ?></th>

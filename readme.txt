@@ -40,6 +40,10 @@ wp2syslog -- Global logging facility for WordPress (WPsyslog revisited)
 
 == Changelog ==
 
+= 1.0.5 =
+* fix: compatibility with php 7
+* sec: better input sanitize
+
 = 1.0.4 =
 * fix: load css only in showlog page
 
